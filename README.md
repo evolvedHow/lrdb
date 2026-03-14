@@ -1,0 +1,1 @@
+This is a database of the local redistricting practices for every county, city, and school board in Gerogia.
