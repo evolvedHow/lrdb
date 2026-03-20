@@ -22,4 +22,31 @@
     
     home.addTo(map);
 
+    <footer class="gamify-footer">
+        <p>© 2026 FairDistrictsGA</p>
+        <a href="/?view=gamify" class="secret-portal">Volunteer Portal</a>
+    </footer>
+    </div> <style>
+    .gamify-footer {
+        margin-top: 3rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid #e5e7eb;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+    
+    /* This makes the link invisible unless you hover over it */
+    .secret-portal {
+        color: transparent;
+        text-decoration: none;
+        cursor: default;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    .secret-portal:hover {
+        color: #9ca3af; /* Light grey appears on hover so you can find it */
+    }
+    </style>
 </script>
