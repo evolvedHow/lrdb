@@ -1,32 +1,34 @@
 <script>
     import { count } from "./store.js";
     import L from "leaflet";
-
     import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher();
 
     let map;
     count.subscribe(value => {
         map = value;
     });
 
-    let home = L.easyButton( '<i class="fa fa-expand" aria-hidden="true"></i>' , function(btn, map){
+    let home = L.easyButton('<i class="fa fa-expand" aria-hidden="true"></i>', function(btn, map){
         map.flyTo([32.482618, -83.602092], 7);
-    },'Reset map');
-    
+    }, 'Reset map');
+
     home.button.onclick = function(){
-        dispatch('homebutton', {
-			text: 'Hello!'
-		});
+        dispatch('homebutton', { text: 'Hello!' });
     }
     
-    home.addTo(map);
+    if (map) home.addTo(map);
+</script>
 
+<div class="home-container">
+    <h1>Local Redistricting Database (LRDB)</h1>
     <footer class="gamify-footer">
         <p>© 2026 FairDistrictsGA</p>
         <a href="/?view=gamify" class="secret-portal">Volunteer Portal</a>
     </footer>
-    </div> <style>
+</div>
+
+<style>
     .gamify-footer {
         margin-top: 3rem;
         padding: 1.5rem 0;
@@ -36,7 +38,6 @@
         color: #6b7280;
     }
     
-    /* This makes the link invisible unless you hover over it */
     .secret-portal {
         color: transparent;
         text-decoration: none;
@@ -46,7 +47,6 @@
     }
 
     .secret-portal:hover {
-        color: #9ca3af; /* Light grey appears on hover so you can find it */
+        color: #9ca3af;
     }
-    </style>
-</script>
+</style>
