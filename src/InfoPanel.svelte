@@ -91,6 +91,40 @@
         <ProcessTimeline {active_poly} />
     {/if}
 
+    <!-- Detail Text (previously in prose) -->
+    {#if active_poly.requirements_n || active_poly.guide_n || active_poly.nonbinding_guidelines || active_poly.guidelines_list || active_poly.no_info}
+        <details class="detail-section">
+            <summary class="detail-toggle">Full process details</summary>
+            <div class="detail-body">
+                {#if active_poly.requirements_n}
+                    <div class="detail-item">
+                        <span class="detail-label">Written Requirements</span>
+                        <p>{active_poly.requirements_n} written requirements for how and when to redistrict, beyond those in the US and Georgia Constitutions.</p>
+                    </div>
+                {/if}
+                {#if active_poly.guide_n}
+                    <div class="detail-item">
+                        <span class="detail-label">Drawing Guidelines</span>
+                        <p>{active_poly.guide_n} written guidelines or standards for map drawing.
+                            {#if active_poly.nonbinding_guidelines}
+                                Criteria used: <em>{active_poly.nonbinding_guidelines}</em> (not legally binding).
+                            {/if}
+                        </p>
+                        {#if active_poly.guidelines_list}
+                            <p class="detail-sub">{active_poly.guidelines_list}</p>
+                        {/if}
+                    </div>
+                {/if}
+                {#if active_poly.no_info}
+                    <div class="detail-item">
+                        <span class="detail-label">Note</span>
+                        <p>{active_poly.no_info}</p>
+                    </div>
+                {/if}
+            </div>
+        </details>
+    {/if}
+
     <!-- Documents & Resources -->
     {#if active_poly.minutes_src || active_poly.supporting_docs_src || active_poly.add_docs || active_poly.municode || active_poly.map_draft1_src}
         <div class="resources">
@@ -277,6 +311,70 @@
 .summary-source {
     font-size: 0.78rem;
     color: #999;
+    font-style: italic;
+}
+
+.detail-section {
+    border-top: 1px solid #f0f0f0;
+    padding: 8px 15px;
+}
+
+.detail-toggle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+
+.detail-toggle::-webkit-details-marker { display: none; }
+
+.detail-toggle::before {
+    content: '▶';
+    font-size: 0.6rem;
+    transition: transform 0.15s;
+}
+
+details[open] .detail-toggle::before {
+    transform: rotate(90deg);
+}
+
+.detail-body {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-item {
+    font-size: 0.85rem;
+}
+
+.detail-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #aaa;
+    margin-bottom: 2px;
+}
+
+.detail-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.detail-sub {
+    margin-top: 4px !important;
+    color: #777 !important;
     font-style: italic;
 }
 </style>
