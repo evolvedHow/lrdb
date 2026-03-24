@@ -1,6 +1,7 @@
 <script>
     import { count } from "./store.js"; //
     import L from "leaflet"; //
+    import 'leaflet-easybutton';
     import { createEventDispatcher } from 'svelte'; //
     
     const dispatch = createEventDispatcher(); //
@@ -21,16 +22,9 @@
     }
 </script>
 
-<div class="home-container">
-    <div id="map-header">
-        <h1>Local Redistricting Database</h1>
-    </div>
-
-    <footer class="gamify-footer">
-        <p>© 2026 FairDistrictsGA</p>
-        <a href="?view=gamify" class="secret-portal">Volunteer Portal</a>
-    </footer>
-</div>
+<footer class="gamify-footer">
+    <a href="?view=gamify" class="secret-portal">Volunteer Portal</a>
+</footer>
 
 <style>
     /* Paste your styles here */

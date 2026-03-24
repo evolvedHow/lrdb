@@ -1,5 +1,5 @@
 :root {
-    --hh: 65px;
+    --hh: 48px;
     --purple: #8d598a;
     --purple2: #b593b3;
     --dkpurple: #6e426b;
@@ -270,7 +270,7 @@ label {
 }
 
 header {
-    height: 65px !important;
+    height: 48px !important;
     white-space: nowrap;
     margin: 0px;
     z-index: 3;
@@ -286,7 +286,7 @@ header {
 @media (max-width: 767px) {
     header {
         width: 100%;
-        height: 45px !important;
+        height: 44px !important;
     }
 
     label {
