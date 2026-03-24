@@ -56,7 +56,7 @@
   function statLine(field, type) {
     if (!stats || !type || !stats[type]) return '';
     const s = stats[type];
-    return `${s[field] ?? 0} of ${s.total}`;
+    return `statewide: ${s[field] ?? 0} of ${s.total}`;
   }
 </script>
 
