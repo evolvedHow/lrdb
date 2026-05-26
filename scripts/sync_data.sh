@@ -7,6 +7,12 @@
 #   ./scripts/sync_data.sh --dry-run
 
 set -e
+
+if [ -n "$CI" ]; then
+  echo "CI environment — skipping FDP sync (data already in repo)"
+  exit 0
+fi
+
 cd "$(dirname "$0")/.."
 
 DEST="$(pwd)/public/assets"
@@ -17,4 +23,4 @@ echo "FDP root  : $FDP_ROOT"
 echo "Dest      : $DEST"
 echo ""
 
-FDP_ROOT="$FDP_ROOT" python -m fdp.cli sync-app lrdb --dest "$DEST" "$@"
+FDP_ROOT="$FDP_ROOT" uv run --directory "$FDP_ROOT" python -m fdp.cli sync-app lrdb --dest "$DEST" "$@"
